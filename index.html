@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizNova - Online Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">Quiz<span>Nova</span></div>
+    <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+</header>
+
+<div class="container">
+
+    <!-- LOGIN PAGE -->
+    <section id="login">
+        <div class="card">
+            <h1>Welcome Back!</h1>
+            <p>Sign in to explore your quizzes.</p>
+
+            <form id="loginForm">
+                <label for="name">Student Name</label>
+                <input type="text" id="name"
+                       placeholder="Enter your name" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password"
+                       placeholder="Enter password" required>
+
+                <button type="submit">Sign In</button>
+                <p id="loginError" class="error"></p>
+            </form>
+        </div>
+
+        <!-- CHATBOT -->
+        <div class="card chatbot">
+            <h2>🤖 QuizNova Study Assistant</h2>
+            <p>Ask me for advice on improving your quiz scores!</p>
+
+            <div id="chatMessages" class="chat-messages">
+                <p class="bot-message">
+                    Hello! I'm your QuizNova assistant.
+                    Ask me for study tips!
+                </p>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="chatInput"
+                       placeholder="Ask me something...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WELCOME PAGE -->
+    <section id="welcome" class="hidden">
+        <div class="card center">
+            <h1>Welcome to QuizNova! 🎉</h1>
+            <p>Test your knowledge and improve your skills.</p>
+            <button onclick="showDashboard()">Start Quiz</button>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="hidden">
+
+        <div class="card">
+            <h1>Hello, <span id="student"></span>!</h1>
+            <p>Choose your favourite subject.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <h2 id="total">0</h2>
+                <p>Quizzes Completed</p>
+            </div>
+
+            <div class="stat">
+                <h2 id="average">0%</h2>
+                <p>Average Score</p>
+            </div>
+
+            <div class="stat">
+                <h2 id="best">0%</h2>
+                <p>Best Score</p>
+            </div>
+        </div>
+
+        <h2>Choose Your Subject</h2>
+        <div class="grid" id="subjects"></div>
+
+<!-- CALCULATOR SECTION -->
+<div class="card calculator">
+    <h2>🧮 QuizNova Calculator</h2>
+    <p>Use this calculator for your calculations.</p>
+
+    <input type="number" id="num1" placeholder="Enter first number" step="any">
+
+    <input type="number" id="num2" placeholder="Enter second number" step="any">
+
+    <div class="calculator-buttons">
+        <button onclick="calculate('+')">+</button>
+        <button onclick="calculate('-')">−</button>
+        <button onclick="calculate('*')">×</button>
+        <button onclick="calculate('/')">÷</button>
+    </div>
+
+    <button onclick="clearCalculator()" class="secondary">
+        Clear
+    </button>
+
+    <h3 id="calcResult">Result: </h3>
+</div>
+
+
+        <div class="card">
+            <h2>📊 Performance Analysis</h2>
+            <div id="analysis">Complete a quiz to see your performance.</div>
+
+            <h2>📚 Quiz History</h2>
+            <div id="history">No quizzes completed yet.</div>
+        </div>
+    </section>
+
+    <!-- QUIZ PAGE -->
+    <section id="quiz" class="hidden">
+        <div class="card">
+            <h2 id="category"></h2>
+            <p id="questionNumber"></p>
+
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <h2 id="question"></h2>
+            <div id="options"></div>
+
+            <button id="nextButton" onclick="nextQuestion()" disabled>
+                Next Question
+            </button>
+
+            <button class="secondary" onclick="showDashboard()">
+                Exit Quiz
+            </button>
+        </div>
+    </section>
+
+    <!-- RESULT PAGE -->
+    <section id="result" class="hidden">
+        <div class="card center">
+            <h1>Quiz Completed! 🎉</h1>
+            <h2 id="finalScore"></h2>
+            <p id="resultMessage"></p>
+
+            <div class="stats">
+                <div class="stat">
+                    <h2 id="correct"></h2>
+                    <p>Correct Answers</p>
+                </div>
+
+                <div class="stat">
+                    <h2 id="wrong"></h2>
+                    <p>Incorrect Answers</p>
+                </div>
+            </div>
+
+            <button onclick="showDashboard()">Back to Dashboard</button>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    QuizNova | Learn • Play • Improve
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
